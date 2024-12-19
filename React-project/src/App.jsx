@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Couter Application</h1>
+        <h1>Counter Application</h1>
         <Counter initialValue={0} incrementAmount={1} />
         <Clock />
       </div>
