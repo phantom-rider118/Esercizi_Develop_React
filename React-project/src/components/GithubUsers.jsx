@@ -1,15 +1,37 @@
-import "./App.css";
-import { GithubUsers } from "./components/GithubUsers";
+import { useState } from "react";
+import { GithubUser } from "./GithubUser";
 
-function App() {
+export function GithubUsers() {
+  const [username, setUsername] = useState("");
+  const [usernames, setUsernames] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username) {
+      setUsernames([...username, username]);
+      setUsername("");
+    }
+  };
   return (
-    <>
-      <div>
-        <h1>Github User Search</h1>
-        <GithubUsers />
+    <div className="github-users">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="user"
+          id="user"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      <div className="user-list">
+        {usernames.map((user, index) => (
+          <GithubUser key={index} username={user} />
+        ))}
       </div>
-    </>
+    </div>
   );
 }
-
-export default App;
