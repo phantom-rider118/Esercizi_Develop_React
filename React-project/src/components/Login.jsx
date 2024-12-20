@@ -21,8 +21,8 @@ export function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    const userDatabase = localStorage.getItem("users");
-    const parseUsers = JSON.parse(userDatabase);
+    const users = localStorage.getItem("users");
+    const parseUsers = JSON.parse(users);
 
     const userExist = parseUsers.find(
       (x) => x.email === data.email && x.password === data.password
